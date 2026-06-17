@@ -3,8 +3,9 @@ FROM php:8.2-apache
 # Habilitar mod_rewrite para Slim
 RUN a2enmod rewrite
  
-# Instalar extensión PDO MySQL
-RUN docker-php-ext-install pdo pdo_mysql
+# Instalar extensión PDO MySQL y zip (necesaria para Composer)
+RUN apt-get update && apt-get install -y libzip-dev unzip \
+    && docker-php-ext-install pdo pdo_mysql zip
  
 # Instalar Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer

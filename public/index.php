@@ -34,10 +34,7 @@ function getConexion(): PDO {
  
 //se crea la app
 $app = AppFactory::create();
- 
-// Permitir que Slim lea el basePath es la dirección base del proyecto
-//$app->setBasePath('/api_rc18025/public');
- 
+  
 // Middleware para parsear JSON en el body
 $app->addBodyParsingMiddleware();
  
